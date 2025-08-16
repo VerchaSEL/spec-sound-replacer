@@ -30,9 +30,6 @@ Bundle a default WAV in the plugin, or pick your own file from the sidebar panel
 - icons/icon.png # toolbar icon
 - specsound/bundled.wav (default sound)
 
-
-> If you don’t want to ship a default sound, just remove `bundled.wav` and keep “Use bundled sound” unchecked in the panel.
-
 ---
 
 ## Build & run (local dev)
