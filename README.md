@@ -1,4 +1,4 @@
-# Spec Sound Replacer (RuneLite)
+# Special Attack Sound (RuneLite)
 
 Play a custom sound whenever **special attack energy is consumed**.  
 Bundle a default WAV in the plugin, or pick your own file from the sidebar panel.

@@ -22,9 +22,9 @@ import java.io.File;
 
 @Slf4j
 @PluginDescriptor(
-        name = "Spec Sound Replacer",
-        description = "Plays a custom sound when special attack energy is consumed",
-        tags = {"sound","audio","special"}
+        name = "Special Attack Sound",
+        description = "Plays one custom WAV when your special-attack energy decreases. In-client file picker and volume—no sound IDs or folders.",
+        tags = {"special-attack","spec","audio","sound","sfx","custom"}
 )
 public class SpecSoundPlugin extends Plugin
 {
