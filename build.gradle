@@ -6,18 +6,14 @@ group = 'com.verchasel'
 version = '1.0.0'
 
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
 }
 
 repositories {
     mavenLocal()
     maven {
         url = 'https://repo.runelite.net'
-        content {
-            includeGroupByRegex("net\\.runelite.*")
-        }
+        content { includeGroupByRegex("net\\.runelite.*") }
     }
     mavenCentral()
 }
@@ -32,6 +28,23 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:1.18.30"
 
     testImplementation "junit:junit:4.13.2"
+    testCompileOnly "net.runelite:runelite-api:${runeliteVersion}"
+    testCompileOnly "net.runelite:client:${runeliteVersion}"
+}
+
+configurations { devRuntime }
+dependencies {
+    devRuntime "net.runelite:runelite-api:${runeliteVersion}"
+    devRuntime "net.runelite:client:${runeliteVersion}"
+}
+
+tasks.register('runClient', JavaExec) {
+    group = 'run'
+    description = 'Launch RuneLite with the SpecSound plugin loaded'
+    dependsOn tasks.testClasses
+    mainClass = 'com.verchasel.specsound.SpecSoundPluginTest'
+    classpath = sourceSets.test.runtimeClasspath + configurations.devRuntime
+    jvmArgs '-ea'
 }
 
 tasks.withType(Copy).configureEach {
